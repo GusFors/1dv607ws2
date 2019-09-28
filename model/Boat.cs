@@ -22,9 +22,10 @@ namespace _1dv607_ws2
             Length = length;
         }
 
-        public override string ToString()
+        /* 
+        public override string ToString() // mostly for ease of access right now, moving to view in some way later
         {
             return $"Type: {Type} Length: {Length}";
-        }
+        } */
     }
 }
