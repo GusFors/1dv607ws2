@@ -1,0 +1,29 @@
+[
+    {
+        "_boatArray": [],
+        "Name": "onds",
+        "PersonalNumber": 198233,
+        "Id": "ond1982191"
+    },
+    {
+        "_boatArray": [
+            {
+                "Length": 2,
+                "Type": 1
+            },
+            {
+                "Length": 8,
+                "Type": 3
+            }
+        ],
+        "Name": "halloelle",
+        "PersonalNumber": 193837,
+        "Id": "hal1938161"
+    },
+    {
+        "_boatArray": [],
+        "Name": "Lars",
+        "PersonalNumber": 1982981,
+        "Id": "Lar1982964"
+    }
+]
