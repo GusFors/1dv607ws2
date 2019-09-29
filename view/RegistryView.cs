@@ -17,6 +17,7 @@ namespace _1dv607_ws2
                 Console.WriteLine("Press '4' to edit an existing member");
                 Console.WriteLine("Press '5' to look at a specific member");
                 Console.WriteLine("Press '6' to register a boat to a member");
+                Console.WriteLine("Press '7' delete a boat from a member");
                 string optionChoice = Console.ReadLine();
 
                 if (optionChoice == "1") //Add new member
@@ -30,7 +31,17 @@ namespace _1dv607_ws2
                 }
                 else if (optionChoice == "2") // display members
                 {
-                    DisplayCompactMembers(register);
+                    Console.WriteLine("Press '1' for a compact list or '2' for a more verbose list");
+                    string userFormat = Console.ReadLine();
+                    if (userFormat == "1")
+                    {
+                        DisplayCompactMembers(register);
+                    }
+                    else if (userFormat == "2")
+                    {
+                        DisplayVerboseMembers(register);
+                    }
+
                 }
                 else if (optionChoice == "3") //delete member
                 {
@@ -69,6 +80,17 @@ namespace _1dv607_ws2
                     Console.WriteLine($"New boat added to {selectedMember}");
 
                 }
+                else if (optionChoice == "7")
+                {
+                    Console.WriteLine("Enter member Id:");
+                    string selectedMember = Console.ReadLine();
+                    Console.WriteLine("Enter boat type: '1'= Sailboat, '2' = Motorsailer, '3' = Kayak/Canoe, '4' = other");
+                    BoatType selectedType = (BoatType) Int32.Parse(Console.ReadLine());
+                    Console.WriteLine("Enter boat length:");
+                    int selectedLength = Int32.Parse(Console.ReadLine());
+                    register.RemoveBoatFromMember(selectedMember, selectedType, selectedLength);
+
+                }
                 else if (optionChoice == "0")
                 {
                     break;
@@ -89,9 +111,17 @@ namespace _1dv607_ws2
         }
 
         // display more detailed information about the members
-        public void DisplayVerboseMembers()
+        public void DisplayVerboseMembers(Register register)
         {
-
+            foreach (var member in register.Members)
+            {
+                string boatString = "";
+                foreach (var boat in member.Boats)
+                {
+                    boatString += $"({boat.Type}, length: {boat.Length}m), ";
+                }
+                Console.WriteLine($"{member.Name}: Personal number:{member.PersonalNumber}, id:{member.Id}, Boats:{boatString}");
+            }
         }
 
         public void DisplayMember(Register register, string memberId)

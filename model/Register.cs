@@ -1,18 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Newtonsoft.Json;
 
 namespace _1dv607_ws2
 {
     class Register
-    {   
+    {
         //TODO: Save and open member data only on startup and exit.
         private List<Member> _memberList = new List<Member>();
 
         public List<Member> Members
-        {
+        { // does not get stored in json otherwise
             get
             {
                 return new List<Member>(_memberList);
@@ -62,7 +61,8 @@ namespace _1dv607_ws2
         }
 
         public int getMemberIndex(string memberId)
-        {
+        {   
+            Console.WriteLine("körs");
             return _memberList.FindIndex(m => m.Id == memberId);
         }
 
@@ -74,6 +74,15 @@ namespace _1dv607_ws2
 
             WriteToRegister();
 
+        }
+
+        public void RemoveBoatFromMember(string memberId, BoatType type, int length)
+        {
+            OpenRegister();
+
+            _memberList[getMemberIndex(memberId)].RemoveBoat(type, length);
+
+            WriteToRegister();
         }
 
         public Register()

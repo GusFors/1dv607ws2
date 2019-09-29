@@ -4,10 +4,22 @@ namespace _1dv607_ws2
 {
     class Boat
     {
+        private int _length;
         public int Length
         {
-            get;
-            set;
+            get => _length;
+            private set
+            {
+                if (value > 0)
+                {
+                    _length = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Boat length must be atleast 1 meter");
+                }
+
+            }
         }
 
         public BoatType Type

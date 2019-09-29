@@ -6,17 +6,14 @@ namespace _1dv607_ws2
     {
         static void Main(string[] args)
         {
-            try
-            {
+            
+               
                 Register register = new Register();
                 RegistryView mainView = new RegistryView();
                 mainView.RenderView(register);
+                
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+           
 
         }
     }
