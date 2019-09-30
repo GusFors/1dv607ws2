@@ -17,7 +17,7 @@ namespace _1dv607_ws2
 
         }
 
-        public string Name 
+        public string Name
         {
             get; //TODO: add validation for setting name
             set;
@@ -45,7 +45,7 @@ namespace _1dv607_ws2
         public string Id
         {
             get;
-             set;
+            set;
         }
 
         private string createId()
@@ -78,12 +78,13 @@ namespace _1dv607_ws2
             _boatArray = tempBoatList.ToArray();
         }
 
-        public void RemoveBoat(BoatType type, int length) {
-            Console.WriteLine("körs2");
+        public void RemoveBoat(BoatType type, int length)
+        {
+
             var tempBoatList = new List<Boat>(_boatArray);
-            
+
             var boatToRemove = tempBoatList.FindIndex(b => b.Type == type && b.Length == length);
-          
+
             tempBoatList.RemoveAt(boatToRemove);
             _boatArray = tempBoatList.ToArray();
             //throw new NotImplementedException();

@@ -60,11 +60,7 @@ namespace _1dv607_ws2
 
         }
 
-        public int getMemberIndex(string memberId)
-        {   
-            Console.WriteLine("körs");
-            return _memberList.FindIndex(m => m.Id == memberId);
-        }
+        public int getMemberIndex(string memberId) => _memberList.FindIndex(m => m.Id == memberId);
 
         public void AddBoatToMember(string memberId, Boat boat)
         {

@@ -72,5 +72,79 @@
     "Name": "Hans",
     "PersonalNumber": 19990909,
     "Id": "Han1999384"
+  },
+  {
+    "_boatArray": [
+      {
+        "Length": 7,
+        "Type": 2
+      },
+      {
+        "Length": 8,
+        "Type": 3
+      }
+    ],
+    "Boats": [
+      {
+        "Length": 7,
+        "Type": 2
+      },
+      {
+        "Length": 8,
+        "Type": 3
+      }
+    ],
+    "Name": "casper",
+    "PersonalNumber": 19970808,
+    "Id": "cas1997748"
+  },
+  {
+    "_boatArray": [
+      {
+        "Length": 4,
+        "Type": 2
+      },
+      {
+        "Length": 9,
+        "Type": 1
+      }
+    ],
+    "Boats": [
+      {
+        "Length": 4,
+        "Type": 2
+      },
+      {
+        "Length": 9,
+        "Type": 1
+      }
+    ],
+    "Name": "Pelle",
+    "PersonalNumber": 19970707,
+    "Id": "Pel1997686"
+  },
+  {
+    "_boatArray": [
+      {
+        "Length": 4,
+        "Type": 3
+      }
+    ],
+    "Boats": [
+      {
+        "Length": 4,
+        "Type": 3
+      }
+    ],
+    "Name": "Gunnbro",
+    "PersonalNumber": 19820202,
+    "Id": "Gun1982783"
+  },
+  {
+    "_boatArray": [],
+    "Boats": [],
+    "Name": "Sarah",
+    "PersonalNumber": 19990203,
+    "Id": "Sar1999603"
   }
 ]
