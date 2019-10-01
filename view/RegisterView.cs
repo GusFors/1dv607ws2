@@ -4,22 +4,15 @@ namespace _1dv607_ws2
 {
     class RegisterView
     {
-        public void RenderView(Register register, BoatView boatView, MemberView memberView)
+        public void RenderView(BoatView boatView, MemberView memberView)
         {
-            Console.WriteLine("Welcome to boat club register!");
+            Console.WriteLine("Welcome to the boat club register!");
             while (true)
             {
                 try
                 {
                     //TODO: add some input validation
-                    Console.WriteLine("Press '0' to exit");
-                    Console.WriteLine("Press '1' to add a new member");
-                    Console.WriteLine("Press '2' to list current member information");
-                    Console.WriteLine("Press '3' to delete a member");
-                    Console.WriteLine("Press '4' to edit an existing member");
-                    Console.WriteLine("Press '5' to look at a specific member");
-                    Console.WriteLine("Press '6' to register a boat to a member");
-                    Console.WriteLine("Press '7' delete a boat from a member");
+                    RenderMenuView();
                     string optionChoice = Console.ReadLine();
 
                     if (optionChoice == "1") //Add new member
@@ -54,7 +47,9 @@ namespace _1dv607_ws2
                     else if (optionChoice == "0") // quit register
                     {
                         break;
-                    } else {
+                    }
+                    else
+                    {
                         Console.WriteLine("Oops, could not understand the input, try again");
                     }
                     Console.WriteLine();
@@ -67,6 +62,18 @@ namespace _1dv607_ws2
 
             }
 
+        }
+
+        public void RenderMenuView()
+        {
+            Console.WriteLine("Press '0' to exit");
+            Console.WriteLine("Press '1' to add a new member");
+            Console.WriteLine("Press '2' to list current member information");
+            Console.WriteLine("Press '3' to delete a member");
+            Console.WriteLine("Press '4' to edit an existing member");
+            Console.WriteLine("Press '5' to look at a specific member");
+            Console.WriteLine("Press '6' to register a boat to a member");
+            Console.WriteLine("Press '7' to delete a boat from a member");
         }
 
     }

@@ -20,9 +20,10 @@ namespace _1dv607_ws2
         public string Name
         {
             get; //TODO: add validation for setting name
-            set;
+            private set;
         }
 
+        // TODO: change from int, too small for 10 number personal number
         public int PersonalNumber
         {
             get
@@ -89,17 +90,6 @@ namespace _1dv607_ws2
             _boatArray = tempBoatList.ToArray();
             //throw new NotImplementedException();
         }
-
-        /* 
-        public override string ToString() // mostly for ease of access right now, moving to view in some way later
-        {   
-            string boatString = "";
-            foreach (var boat in _boatArray)
-            {
-                boatString += $"Boat:({boat}), ";
-            }
-            return $"Name: {Name}\nPersonalNumber: {PersonalNumber}\nId: {Id}\nBoats: [{boatString}]";
-        } */
 
     }
 

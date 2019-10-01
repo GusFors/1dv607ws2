@@ -13,9 +13,10 @@ namespace _1dv607_ws2
             Console.WriteLine("Enter Personal number: ");
             int personalNumber = Int32.Parse(Console.ReadLine());
 
-            Member newMember = new Member(name, personalNumber);
+            Member newMember = new Member(name, personalNumber); // kolla om det här är hidden dependency?
 
             _register.AddMemberToRegister(newMember);
+            Console.WriteLine("New member added");
 
         }
 
@@ -37,6 +38,7 @@ namespace _1dv607_ws2
         {
             Console.WriteLine("Enter member Id:");
             _register.DeleteMemberFromRegister(Console.ReadLine());
+            Console.WriteLine("Member deleted");
         }
 
         public void EditMemberView()
@@ -50,19 +52,22 @@ namespace _1dv607_ws2
 
             int memberPersonalNumber = Int32.Parse(Console.ReadLine());
             _register.EditMemberInRegister(memberId, memberName, memberPersonalNumber);
+            Console.WriteLine("Member edited.");
         }
 
         public void DisplayMemberView()
         {
             Console.WriteLine("Enter member Id");
             int memberindex = _register.getMemberIndex(Console.ReadLine());
-            var chosenMember = _register.Members[memberindex];
+            var chosenMember = _register.GetMembersCopy() [memberindex];
+
             string memberBoats = "";
             foreach (var boat in chosenMember.Boats)
             {
                 memberBoats += $"({boat.Type}, length: {boat.Length}m), ";
             }
-            Console.WriteLine($"Member: [Name: {chosenMember.Name}, Id: {chosenMember.Id}, Boats: [{memberBoats}]]");
+            Console.WriteLine($"Member: [Name: {chosenMember.Name}, Personal number: {chosenMember.PersonalNumber} Id: {chosenMember.Id}, Boats: [{memberBoats}]]");
+
         }
 
         public MemberView(Register register)
@@ -72,7 +77,7 @@ namespace _1dv607_ws2
 
         private void DisplayCompactMembers()
         {
-            foreach (var Member in _register.Members)
+            foreach (var Member in _register.GetMembersCopy())
             {
                 Console.WriteLine($"{Member.Name}, id:{Member.Id}, Number of boats:{Member.Boats.Length}");
             }
@@ -81,7 +86,7 @@ namespace _1dv607_ws2
         // display more detailed information about the members
         private void DisplayVerboseMembers()
         {
-            foreach (var member in _register.Members)
+            foreach (var member in _register.GetMembersCopy())
             {
                 string boatString = "";
                 foreach (var boat in member.Boats)

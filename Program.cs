@@ -11,7 +11,7 @@ namespace _1dv607_ws2
             BoatView bView = new BoatView(register);
             MemberView mView = new MemberView(register);
             RegisterView mainView = new RegisterView();
-            mainView.RenderView(register, bView, mView);
+            mainView.RenderView(bView, mView);
 
         }
     }

@@ -25,7 +25,7 @@ namespace _1dv607_ws2
         public BoatType Type
         {
             get;
-            set;
+            private set;
         }
 
         public Boat(BoatType type, int length)
@@ -34,10 +34,6 @@ namespace _1dv607_ws2
             Length = length;
         }
 
-        /* 
-        public override string ToString() // mostly for ease of access right now, moving to view in some way later
-        {
-            return $"Type: {Type} Length: {Length}";
-        } */
+       
     }
 }

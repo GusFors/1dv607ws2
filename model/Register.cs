@@ -10,13 +10,8 @@ namespace _1dv607_ws2
         //TODO: Save and open member data only on startup and exit.
         private List<Member> _memberList = new List<Member>();
 
-        public List<Member> Members
-        { // does not get stored in json otherwise
-            get
-            {
-                return new List<Member>(_memberList);
-            }
-        }
+        public List<Member> GetMembersCopy() => new List<Member>(_memberList);
+        // does not get stored in json otherwise
 
         public void WriteToRegister()
         {

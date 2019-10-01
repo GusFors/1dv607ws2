@@ -15,9 +15,9 @@ namespace _1dv607_ws2
 
             Boat newBoat = new Boat(boatType, boatLength);
             Console.WriteLine("Enter the member Id:");
-            string selectedMember = Console.ReadLine();
-            _register.AddBoatToMember(selectedMember, newBoat);
-            Console.WriteLine($"New boat added to {selectedMember}");
+            string id = Console.ReadLine();
+            _register.AddBoatToMember(id, newBoat);
+            Console.WriteLine($"New boat added to {id}");
         }
 
         public void DeleteBoatView()
@@ -29,6 +29,7 @@ namespace _1dv607_ws2
             Console.WriteLine("Enter boat length:");
             int selectedLength = Int32.Parse(Console.ReadLine());
             _register.RemoveBoatFromMember(selectedMember, selectedType, selectedLength);
+            Console.WriteLine("Boat deleted.");
         }
 
         public BoatView(Register register) {
