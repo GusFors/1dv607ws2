@@ -1,6 +1,7 @@
 using System;
+using Model;
 
-namespace _1dv607_ws2
+namespace View
 {
     class MemberView
     {
@@ -52,11 +53,11 @@ namespace _1dv607_ws2
             Console.WriteLine("Enter new member name:");
             string memberName = Console.ReadLine();
 
-            Console.WriteLine("Enter new member personal number:");
+            Console.WriteLine("Enter new member personal number (YYMMDD):");
 
             int memberPersonalNumber = Int32.Parse(Console.ReadLine());
             _register.EditMemberInRegister(memberId, memberName, memberPersonalNumber);
-            Console.WriteLine($"Member {memberId} edited.");
+            Console.WriteLine($"Member edited.");
         }
 
         //Display a selected member
@@ -65,6 +66,8 @@ namespace _1dv607_ws2
             Console.WriteLine("Enter member Id");
             int memberindex = _register.GetMemberIndex(Console.ReadLine());
             var chosenMember = _register.GetMembersCopy() [memberindex];
+           
+           
 
             string memberBoats = "";
             foreach (var boat in chosenMember.Boats)
@@ -83,7 +86,7 @@ namespace _1dv607_ws2
         {
             foreach (var Member in _register.GetMembersCopy())
             {
-                Console.WriteLine($"{Member.Name}: [id: {Member.Id}, Number of boats: {Member.Boats.Length}]");
+                Console.WriteLine($"{Member.Name}: [id: {Member.Id}, Number of boats: {Member.Boats.Count}]");
             }
         }
 

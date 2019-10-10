@@ -1,12 +1,12 @@
 using System;
 
-namespace _1dv607_ws2
+namespace View
 {
     class RegisterView
     {
         public void RenderView(BoatView boatView, MemberView memberView)
         {
-            Console.WriteLine("Welcome to the boat club register!");
+            Console.WriteLine("Welcome to the boat club register!\n");
             bool running = true;
             while (running)
             {

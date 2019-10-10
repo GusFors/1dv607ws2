@@ -2,50 +2,23 @@
   {
     "_boatArray": [
       {
-        "Length": 7,
+        "Length": 5,
         "Type": 2
       }
     ],
-    "Boats": [
-      {
-        "Length": 7,
-        "Type": 2
-      }
-    ],
-    "Name": "sofia",
-    "PersonalNumber": 970203,
-    "Id": "so9792"
-  },
-  {
-    "_boatArray": [],
-    "Boats": [],
     "Name": "Jonas",
-    "PersonalNumber": 950202,
-    "Id": "Jo9529"
+    "PersonalNumber": 980909,
+    "Id": "Jo9829"
   },
   {
     "_boatArray": [
       {
-        "Length": 6,
-        "Type": 1
-      },
-      {
-        "Length": 6,
-        "Type": 2
+        "Length": 4,
+        "Type": 3
       }
     ],
-    "Boats": [
-      {
-        "Length": 6,
-        "Type": 1
-      },
-      {
-        "Length": 6,
-        "Type": 2
-      }
-    ],
-    "Name": "pelle",
-    "PersonalNumber": 600405,
-    "Id": "pe6052"
+    "Name": "Lars",
+    "PersonalNumber": 670505,
+    "Id": "La6716"
   }
 ]

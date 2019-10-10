@@ -1,6 +1,7 @@
 using System;
+using Model;
 
-namespace _1dv607_ws2
+namespace View
 {
     class BoatView
     {
@@ -39,7 +40,7 @@ namespace _1dv607_ws2
             var chosenMember = _register.GetMembersCopy() [memberIndex];
             string boatString = "";
 
-            for (int i = 0; i < chosenMember.Boats.Length; i++)
+            for (int i = 0; i < chosenMember.Boats.Count; i++)
             {
                 var currentBoat = chosenMember.Boats[i];
                 boatString += $" Boat {i} [{currentBoat.Type}, length: {currentBoat.Length}m]\n";

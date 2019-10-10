@@ -1,29 +1,42 @@
 using System;
 using System.Collections.Generic;
-namespace _1dv607_ws2
+using System.Collections.ObjectModel;
+using Newtonsoft.Json;
+
+namespace Model
 {
 
     class Member
     {
-        public Boat[] _boatArray = new Boat[0]; // public for now so data gets stored in json, array instead of list now for json storage
-        private int _personalNumber;
-        //private string _name;
-        public Boat[] Boats
-        { // temporary fix so data gets stored in json.
-            get
-            {
-                return new List<Boat>(_boatArray).ToArray();
-            }
+        [JsonPropertyAttribute]
+        private Boat[] _boatArray;
 
+        private Boat[] _boatTest;
+        private int _personalNumber;
+        private string _name;
+        //private string _name;
+        public bool ShouldSerialize_boatArray()
+        {
+            
+            return true;
         }
+        
+        [JsonIgnoreAttribute]
+        public ReadOnlyCollection<Boat> Boats => new ReadOnlyCollection<Boat>(_boatArray);
 
         public string Name
         {
-            get; //TODO: add validation for setting name
-            private set;
+            get => _name;
+            private set
+            {
+                if (value.Length < 2)
+                {
+                    throw new ArgumentException("Name needs to have atleast 2 letters");
+                }
+                _name = value;
+            }
         }
 
-        // TODO: change from int, too small for 10 number personal number
         public int PersonalNumber
         {
             get
@@ -33,7 +46,7 @@ namespace _1dv607_ws2
 
             private set
             {
-                if (value.ToString().Length == 6 )
+                if (value.ToString().Length == 6)
                 {
                     _personalNumber = value;
                 }
@@ -65,23 +78,31 @@ namespace _1dv607_ws2
             Id = CreateId();
         }
 
-        public Member(string name, int personalNumber)
+        public Member(string name, int personalNumber, Boat[] boatArray = null)
         {
             Name = name;
             PersonalNumber = personalNumber;
             Id = CreateId();
+            Console.WriteLine("creating!");
+            _boatArray = boatArray;
+            if (boatArray == null)
+            {
+                _boatArray = new Boat[0];
+            }
+
+            //_boatArray = new List<Boat>(Boats).ToArray();
         }
 
         public void AddBoat(Boat boat)
         {
-            var tempBoatList = new List<Boat>(_boatArray);
+            var tempBoatList = new List<Boat>(Boats);
             tempBoatList.Add(boat);
             _boatArray = tempBoatList.ToArray();
         }
 
         public void RemoveBoat(int boatIndex)
         {
-            if (Boats.Length > boatIndex)
+            if (Boats.Count > boatIndex)
             {
                 var tempBoatList = new List<Boat>(_boatArray);
                 tempBoatList.RemoveAt(boatIndex);
@@ -96,13 +117,13 @@ namespace _1dv607_ws2
 
         public void EditBoat(int boatIndex, BoatType boatType, int length)
         {
-            if (Boats.Length > boatIndex)
+            if (Boats.Count > boatIndex)
             {
                 var tempBoatList = new List<Boat>(_boatArray);
                 tempBoatList[boatIndex].Update(boatType, length);
                 _boatArray = tempBoatList.ToArray();
             }
-             else
+            else
             {
                 throw new ArgumentException("Could not find and edit specified boat.");
             }

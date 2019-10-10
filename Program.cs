@@ -1,4 +1,6 @@
 ﻿using System;
+using View;
+using Model;
 
 namespace _1dv607_ws2
 {

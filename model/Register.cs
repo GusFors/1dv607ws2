@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
-namespace _1dv607_ws2
+namespace Model
 {
     class Register
     {
         //TODO: Save and open member data only on startup and exit.
         private List<Member> _memberList = new List<Member>();
 
-        public List<Member> GetMembersCopy() => new List<Member>(_memberList);
-        // does not get stored in json otherwise
+        public ReadOnlyCollection<Member> GetMembersCopy() => new ReadOnlyCollection<Member>(_memberList);
 
         public void WriteToRegister()
         {

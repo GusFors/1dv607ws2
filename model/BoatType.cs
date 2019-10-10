@@ -1,4 +1,4 @@
-namespace _1dv607_ws2
+namespace Model
 {
     public enum BoatType
     {

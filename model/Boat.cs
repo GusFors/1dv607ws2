@@ -1,6 +1,6 @@
 using System;
 
-namespace _1dv607_ws2
+namespace Model
 {
     class Boat
     {
