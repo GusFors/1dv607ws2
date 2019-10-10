@@ -25,14 +25,13 @@ namespace _1dv607_ws2
         {
             OpenRegister();
             _memberList.Add(member);
-
             WriteToRegister();
         }
 
         public void DeleteMemberFromRegister(string memberId)
         {
             OpenRegister();
-            _memberList.RemoveAt(getMemberIndex(memberId));
+            _memberList.RemoveAt(GetMemberIndex(memberId));
             WriteToRegister();
         }
 
@@ -49,30 +48,39 @@ namespace _1dv607_ws2
         public void EditMemberInRegister(string memberId, string name, int personalNumber)
         {
             OpenRegister();
-            _memberList[getMemberIndex(memberId)].Update(name, personalNumber);
-
+            _memberList[GetMemberIndex(memberId)].Update(name, personalNumber);
             WriteToRegister();
-
         }
 
-        public int getMemberIndex(string memberId) => _memberList.FindIndex(m => m.Id == memberId);
+        public int GetMemberIndex(string memberId)
+        {
+            if (_memberList.Exists(m => m.Id == memberId))
+            {
+                return _memberList.FindIndex(m => m.Id == memberId);
+            }
+            throw new ArgumentException("Could not find specified member.");
+
+        }
 
         public void AddBoatToMember(string memberId, Boat boat)
         {
             OpenRegister();
-
-            _memberList[getMemberIndex(memberId)].AddBoat(boat);
-
+            _memberList[GetMemberIndex(memberId)].AddBoat(boat);
             WriteToRegister();
 
         }
 
-        public void RemoveBoatFromMember(string memberId, BoatType type, int length)
+        public void RemoveBoatFromMember(string memberId, int boatIndex)
         {
             OpenRegister();
+            _memberList[GetMemberIndex(memberId)].RemoveBoat(boatIndex);
+            WriteToRegister();
+        }
 
-            _memberList[getMemberIndex(memberId)].RemoveBoat(type, length);
-
+        public void EditMemberBoat(string memberId, int boatIndex, BoatType boatType, int length)
+        {
+            OpenRegister();
+            _memberList[GetMemberIndex(memberId)].EditBoat(boatIndex, boatType, length);
             WriteToRegister();
         }
 

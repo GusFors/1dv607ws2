@@ -34,6 +34,11 @@ namespace _1dv607_ws2
             Length = length;
         }
 
-       
+        public void Update(BoatType type, int length)
+        {
+            Type = type;
+            Length = length;
+        }
+
     }
 }

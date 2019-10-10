@@ -3,7 +3,7 @@ using System;
 namespace _1dv607_ws2
 {
     class BoatView
-    {   
+    {
         private Register _register;
         public void BoatToMemberView()
         {
@@ -12,27 +12,63 @@ namespace _1dv607_ws2
 
             Console.WriteLine("Enter the boats length in whole meters:");
             int boatLength = Int32.Parse(Console.ReadLine());
-
             Boat newBoat = new Boat(boatType, boatLength);
-            Console.WriteLine("Enter the member Id:");
-            string id = Console.ReadLine();
-            _register.AddBoatToMember(id, newBoat);
-            Console.WriteLine($"New boat added to {id}");
+
+            Console.WriteLine("Enter the member Id to add the boat to:");
+            string memberId = Console.ReadLine();
+            _register.AddBoatToMember(memberId, newBoat);
+
+            Console.WriteLine($"New boat added to {memberId}");
         }
 
         public void DeleteBoatView()
         {
             Console.WriteLine("Enter member Id:");
-            string selectedMember = Console.ReadLine();
-            Console.WriteLine("Enter boat type: '1'= Sailboat, '2' = Motorsailer, '3' = Kayak/Canoe, '4' = other");
-            BoatType selectedType = (BoatType) Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Enter boat length:");
-            int selectedLength = Int32.Parse(Console.ReadLine());
-            _register.RemoveBoatFromMember(selectedMember, selectedType, selectedLength);
-            Console.WriteLine("Boat deleted.");
+            string memberId = Console.ReadLine();
+            PrintBoatsView(memberId);
+
+            Console.WriteLine("Enter the number of the boat you want to delete:");
+            _register.RemoveBoatFromMember(memberId, Int32.Parse(Console.ReadLine()));
+
+            Console.WriteLine($"Boat deleted from {memberId}.");
         }
 
-        public BoatView(Register register) {
+        public void PrintBoatsView(string memberId)
+        {
+            int memberIndex = _register.GetMemberIndex(memberId);
+            var chosenMember = _register.GetMembersCopy() [memberIndex];
+            string boatString = "";
+
+            for (int i = 0; i < chosenMember.Boats.Length; i++)
+            {
+                var currentBoat = chosenMember.Boats[i];
+                boatString += $" Boat {i} [{currentBoat.Type}, length: {currentBoat.Length}m]\n";
+            }
+            Console.WriteLine(boatString);
+        }
+
+        public void EditBoatView()
+        {
+            Console.WriteLine("Enter member Id:");
+            string memberId = Console.ReadLine();
+            PrintBoatsView(memberId);
+
+            Console.WriteLine("Enter the number of the boat you want to edit:");
+            var boatIndex = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter new boat type:\n '1'= Sailboat, '2' = Motorsailer, '3' = Kayak/Canoe, '4' = other");
+            var boatType = (BoatType) Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the boats new length in whole meters:");
+            int boatLength = Int32.Parse(Console.ReadLine());
+            _register.EditMemberBoat(memberId, boatIndex, boatType, boatLength);
+
+            Console.WriteLine($"{memberId} boat was edited.");
+
+        }
+
+        public BoatView(Register register)
+        {
             _register = register;
         }
     }

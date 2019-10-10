@@ -7,11 +7,11 @@ namespace _1dv607_ws2
         public void RenderView(BoatView boatView, MemberView memberView)
         {
             Console.WriteLine("Welcome to the boat club register!");
-            while (true)
+            bool running = true;
+            while (running)
             {
                 try
                 {
-                    //TODO: add some input validation
                     RenderMenuView();
                     string optionChoice = Console.ReadLine();
 
@@ -21,7 +21,7 @@ namespace _1dv607_ws2
                     }
                     else if (optionChoice == "2") // display members
                     {
-                        memberView.DisplayMembersView();
+                        memberView.DisplayAllMembersView();
                     }
                     else if (optionChoice == "3") //delete member
                     {
@@ -44,9 +44,13 @@ namespace _1dv607_ws2
                         boatView.DeleteBoatView();
 
                     }
+                    else if (optionChoice == "8") // edit a boat
+                    {
+                        boatView.EditBoatView();
+                    }
                     else if (optionChoice == "0") // quit register
                     {
-                        break;
+                        running = false;
                     }
                     else
                     {
@@ -74,6 +78,7 @@ namespace _1dv607_ws2
             Console.WriteLine("Press '5' to look at a specific member");
             Console.WriteLine("Press '6' to register a boat to a member");
             Console.WriteLine("Press '7' to delete a boat from a member");
+            Console.WriteLine("Press '8' to edit a members boat");
         }
 
     }

@@ -2,179 +2,50 @@
   {
     "_boatArray": [
       {
-        "Length": 4,
-        "Type": 3
-      },
-      {
-        "Length": 6,
-        "Type": 1
-      },
-      {
-        "Length": 4,
-        "Type": 4
-      },
-      {
         "Length": 7,
         "Type": 2
       }
     ],
     "Boats": [
       {
-        "Length": 4,
-        "Type": 3
-      },
-      {
-        "Length": 6,
-        "Type": 1
-      },
-      {
-        "Length": 4,
-        "Type": 4
-      },
-      {
         "Length": 7,
         "Type": 2
       }
     ],
-    "Name": "Lars",
-    "PersonalNumber": 19820909,
-    "Id": "Lar1982245"
+    "Name": "sofia",
+    "PersonalNumber": 970203,
+    "Id": "so9792"
   },
   {
-    "_boatArray": [
-      {
-        "Length": 6,
-        "Type": 2
-      }
-    ],
-    "Boats": [
-      {
-        "Length": 6,
-        "Type": 2
-      }
-    ],
-    "Name": "Stefan",
-    "PersonalNumber": 19970909,
-    "Id": "Ste1997757"
-  },
-  {
-    "_boatArray": [
-      {
-        "Length": 5,
-        "Type": 2
-      },
-      {
-        "Length": 5,
-        "Type": 3
-      }
-    ],
-    "Boats": [
-      {
-        "Length": 5,
-        "Type": 2
-      },
-      {
-        "Length": 5,
-        "Type": 3
-      }
-    ],
+    "_boatArray": [],
+    "Boats": [],
     "Name": "Jonas",
-    "PersonalNumber": 19690909,
-    "Id": "Jon1969489"
+    "PersonalNumber": 950202,
+    "Id": "Jo9529"
   },
   {
     "_boatArray": [
       {
-        "Length": 3,
+        "Length": 6,
         "Type": 1
+      },
+      {
+        "Length": 6,
+        "Type": 2
       }
     ],
     "Boats": [
       {
-        "Length": 3,
+        "Length": 6,
         "Type": 1
-      }
-    ],
-    "Name": "Hans",
-    "PersonalNumber": 19990909,
-    "Id": "Han199934"
-  },
-  {
-    "_boatArray": [
-      {
-        "Length": 7,
-        "Type": 2
       },
       {
-        "Length": 8,
-        "Type": 3
-      }
-    ],
-    "Boats": [
-      {
-        "Length": 7,
+        "Length": 6,
         "Type": 2
-      },
-      {
-        "Length": 8,
-        "Type": 3
       }
     ],
-    "Name": "casper",
-    "PersonalNumber": 19970808,
-    "Id": "cas1997326"
-  },
-  {
-    "_boatArray": [
-      {
-        "Length": 4,
-        "Type": 2
-      },
-      {
-        "Length": 9,
-        "Type": 1
-      }
-    ],
-    "Boats": [
-      {
-        "Length": 4,
-        "Type": 2
-      },
-      {
-        "Length": 9,
-        "Type": 1
-      }
-    ],
-    "Name": "Pelle",
-    "PersonalNumber": 19970707,
-    "Id": "Pel1997785"
-  },
-  {
-    "_boatArray": [],
-    "Boats": [],
-    "Name": "Lisa",
-    "PersonalNumber": 19221012,
-    "Id": "Lis1922381"
-  },
-  {
-    "_boatArray": [],
-    "Boats": [],
-    "Name": "Test",
-    "PersonalNumber": 19990909,
-    "Id": "Tes1999197"
-  },
-  {
-    "_boatArray": [],
-    "Boats": [],
-    "Name": "Hallo",
-    "PersonalNumber": 19600202,
-    "Id": "Hal1960909"
-  },
-  {
-    "_boatArray": [],
-    "Boats": [],
-    "Name": "Yass",
-    "PersonalNumber": 19990909,
-    "Id": "Yas1999511"
+    "Name": "pelle",
+    "PersonalNumber": 600405,
+    "Id": "pe6052"
   }
 ]

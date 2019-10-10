@@ -6,7 +6,7 @@ namespace _1dv607_ws2
     {
         static void Main(string[] args)
         {
-
+            
             Register register = new Register();
             BoatView bView = new BoatView(register);
             MemberView mView = new MemberView(register);

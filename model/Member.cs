@@ -33,13 +33,13 @@ namespace _1dv607_ws2
 
             private set
             {
-                if (value.ToString().Length == 8 || value.ToString().Length == 10)
+                if (value.ToString().Length == 6 )
                 {
                     _personalNumber = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Personal number needs to be 8 or 10 numbers");
+                    throw new ArgumentException("Personal number needs to be 6 numbers");
                 }
             }
         }
@@ -49,12 +49,12 @@ namespace _1dv607_ws2
             set;
         }
 
-        private string createId()
+        private string CreateId()
         {
             Random randomizer = new Random();
-            string namePart = Name.Substring(0, 3);
-            string personalNumberPart = PersonalNumber.ToString().Substring(0, 4);
-            int randomNumPart = (int) (randomizer.NextDouble() * 1000);
+            string namePart = Name.Substring(0, 2);
+            string personalNumberPart = PersonalNumber.ToString().Substring(0, 2);
+            int randomNumPart = (int) (randomizer.NextDouble() * 100);
             return namePart + personalNumberPart + randomNumPart;
         }
 
@@ -62,14 +62,14 @@ namespace _1dv607_ws2
         {
             Name = name;
             PersonalNumber = personalNumber;
-            Id = createId();
+            Id = CreateId();
         }
 
         public Member(string name, int personalNumber)
         {
             Name = name;
             PersonalNumber = personalNumber;
-            Id = createId();
+            Id = CreateId();
         }
 
         public void AddBoat(Boat boat)
@@ -79,17 +79,37 @@ namespace _1dv607_ws2
             _boatArray = tempBoatList.ToArray();
         }
 
-        public void RemoveBoat(BoatType type, int length)
+        public void RemoveBoat(int boatIndex)
         {
+            if (Boats.Length > boatIndex)
+            {
+                var tempBoatList = new List<Boat>(_boatArray);
+                tempBoatList.RemoveAt(boatIndex);
+                _boatArray = tempBoatList.ToArray();
+            }
+            else
+            {
+                throw new ArgumentException("Could not find specified boat.");
+            }
 
-            var tempBoatList = new List<Boat>(_boatArray);
-
-            var boatToRemove = tempBoatList.FindIndex(b => b.Type == type && b.Length == length);
-
-            tempBoatList.RemoveAt(boatToRemove);
-            _boatArray = tempBoatList.ToArray();
-            //throw new NotImplementedException();
         }
+
+        public void EditBoat(int boatIndex, BoatType boatType, int length)
+        {
+            if (Boats.Length > boatIndex)
+            {
+                var tempBoatList = new List<Boat>(_boatArray);
+                tempBoatList[boatIndex].Update(boatType, length);
+                _boatArray = tempBoatList.ToArray();
+            }
+             else
+            {
+                throw new ArgumentException("Could not find and edit specified boat.");
+            }
+
+        }
+
+        //TODO EDIT BOAT
 
     }
 

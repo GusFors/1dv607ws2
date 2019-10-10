@@ -10,35 +10,39 @@ namespace _1dv607_ws2
         {
             Console.WriteLine("Enter name: ");
             string name = Console.ReadLine();
-            Console.WriteLine("Enter Personal number: ");
+
+            Console.WriteLine("Enter Personal number (YYMMDD): ");
             int personalNumber = Int32.Parse(Console.ReadLine());
 
             Member newMember = new Member(name, personalNumber); // kolla om det här är hidden dependency?
-
             _register.AddMemberToRegister(newMember);
-            Console.WriteLine("New member added");
 
+            Console.WriteLine($"New member {newMember.Id} added.");
         }
 
-        public void DisplayMembersView()
+        //List all members
+        public void DisplayAllMembersView()
         {
-            Console.WriteLine("Press '1' for a compact list or '2' for a more verbose list");
+            Console.WriteLine("Press any key for a compact list or 'V' for a more verbose list");
             string userFormat = Console.ReadLine();
-            if (userFormat == "1")
-            {
-                DisplayCompactMembers();
-            }
-            else if (userFormat == "2")
+
+            if (userFormat.ToUpper() == "V")
             {
                 DisplayVerboseMembers();
+            }
+            else
+            {
+                DisplayCompactMembers();
             }
         }
 
         public void DeleteMemberView()
         {
             Console.WriteLine("Enter member Id:");
-            _register.DeleteMemberFromRegister(Console.ReadLine());
-            Console.WriteLine("Member deleted");
+            string memberId = Console.ReadLine();
+            _register.DeleteMemberFromRegister(memberId);
+
+            Console.WriteLine($"{memberId} was deleted.");
         }
 
         public void EditMemberView()
@@ -52,13 +56,14 @@ namespace _1dv607_ws2
 
             int memberPersonalNumber = Int32.Parse(Console.ReadLine());
             _register.EditMemberInRegister(memberId, memberName, memberPersonalNumber);
-            Console.WriteLine("Member edited.");
+            Console.WriteLine($"Member {memberId} edited.");
         }
 
+        //Display a selected member
         public void DisplayMemberView()
         {
             Console.WriteLine("Enter member Id");
-            int memberindex = _register.getMemberIndex(Console.ReadLine());
+            int memberindex = _register.GetMemberIndex(Console.ReadLine());
             var chosenMember = _register.GetMembersCopy() [memberindex];
 
             string memberBoats = "";
@@ -66,8 +71,7 @@ namespace _1dv607_ws2
             {
                 memberBoats += $"({boat.Type}, length: {boat.Length}m), ";
             }
-            Console.WriteLine($"Member: [Name: {chosenMember.Name}, Personal number: {chosenMember.PersonalNumber} Id: {chosenMember.Id}, Boats: [{memberBoats}]]");
-
+            Console.WriteLine($"Member: [Name: {chosenMember.Name}, Personal number: {chosenMember.PersonalNumber}, Id: {chosenMember.Id}, Boats: [{memberBoats}]]");
         }
 
         public MemberView(Register register)
@@ -79,7 +83,7 @@ namespace _1dv607_ws2
         {
             foreach (var Member in _register.GetMembersCopy())
             {
-                Console.WriteLine($"{Member.Name}, id:{Member.Id}, Number of boats:{Member.Boats.Length}");
+                Console.WriteLine($"{Member.Name}: [id: {Member.Id}, Number of boats: {Member.Boats.Length}]");
             }
         }
 
@@ -93,7 +97,7 @@ namespace _1dv607_ws2
                 {
                     boatString += $"({boat.Type}, length: {boat.Length}m), ";
                 }
-                Console.WriteLine($"{member.Name}: Personal number: {member.PersonalNumber}, id: {member.Id}, Boats: [{boatString}]");
+                Console.WriteLine($"{member.Name}: [Personal number: {member.PersonalNumber}, id: {member.Id}, Boats: [{boatString}]]");
             }
         }
 
