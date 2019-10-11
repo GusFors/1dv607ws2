@@ -5,21 +5,12 @@ namespace Model
     class Boat
     {
         private int _length;
+
         public int Length
         {
             get => _length;
-            private set
-            {
-                if (value > 0)
-                {
-                    _length = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Boat length must be atleast 1 meter");
-                }
+            private set => _length = value > 0 ? value : throw new ArgumentException("Boat length must be atleast 1 meter");
 
-            }
         }
 
         public BoatType Type

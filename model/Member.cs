@@ -8,58 +8,34 @@ namespace Model
 
     class Member
     {
-        [JsonPropertyAttribute]
+        [JsonPropertyAttribute] // Needed for storing some properties correctly in json.
         private Boat[] _boatArray;
-
-        private Boat[] _boatTest;
         private int _personalNumber;
         private string _name;
-        //private string _name;
-        public bool ShouldSerialize_boatArray()
-        {
-            
-            return true;
-        }
-        
+
         [JsonIgnoreAttribute]
         public ReadOnlyCollection<Boat> Boats => new ReadOnlyCollection<Boat>(_boatArray);
 
         public string Name
         {
             get => _name;
-            private set
-            {
-                if (value.Length < 2)
-                {
-                    throw new ArgumentException("Name needs to have atleast 2 letters");
-                }
-                _name = value;
-            }
+            private set => _name = value.Length > 2 ? value : throw new ArgumentException("Name needs to have atleast 2 letters");
+
         }
 
         public int PersonalNumber
         {
-            get
-            {
-                return _personalNumber;
-            }
+            get => _personalNumber;
 
-            private set
-            {
-                if (value.ToString().Length == 6)
-                {
-                    _personalNumber = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Personal number needs to be 6 numbers");
-                }
-            }
+            private set => _personalNumber = value.ToString().Length == 6 ? value : throw new ArgumentException("Personal number needs to be 6 numbers");
+
         }
+
+        [JsonPropertyAttribute]
         public string Id
         {
             get;
-            set;
+            private set;
         }
 
         private string CreateId()
@@ -78,24 +54,20 @@ namespace Model
             Id = CreateId();
         }
 
-        public Member(string name, int personalNumber, Boat[] boatArray = null)
+        public Member(string name, int personalNumber)
         {
             Name = name;
             PersonalNumber = personalNumber;
             Id = CreateId();
-            Console.WriteLine("creating!");
-            _boatArray = boatArray;
-            if (boatArray == null)
+            if (_boatArray == null) // prevent null json storage
             {
                 _boatArray = new Boat[0];
             }
-
-            //_boatArray = new List<Boat>(Boats).ToArray();
         }
 
         public void AddBoat(Boat boat)
         {
-            var tempBoatList = new List<Boat>(Boats);
+            List<Boat> tempBoatList = new List<Boat>(Boats);
             tempBoatList.Add(boat);
             _boatArray = tempBoatList.ToArray();
         }
@@ -104,7 +76,7 @@ namespace Model
         {
             if (Boats.Count > boatIndex)
             {
-                var tempBoatList = new List<Boat>(_boatArray);
+                List<Boat> tempBoatList = new List<Boat>(_boatArray);
                 tempBoatList.RemoveAt(boatIndex);
                 _boatArray = tempBoatList.ToArray();
             }
@@ -129,8 +101,6 @@ namespace Model
             }
 
         }
-
-        //TODO EDIT BOAT
 
     }
 

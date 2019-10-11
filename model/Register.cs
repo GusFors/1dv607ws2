@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using Newtonsoft.Json;
-using System.Collections.ObjectModel;
 
 namespace Model
 {
@@ -13,6 +13,7 @@ namespace Model
 
         public ReadOnlyCollection<Member> GetMembersCopy() => new ReadOnlyCollection<Member>(_memberList);
 
+        //write member data to json file(save)
         public void WriteToRegister()
         {
             using(StreamWriter streamWriter = new StreamWriter("data.json"))
@@ -21,19 +22,11 @@ namespace Model
             }
         }
 
-        public void AddMemberToRegister(Member member)
-        {
-            OpenRegister();
-            _memberList.Add(member);
-            WriteToRegister();
-        }
+        public void AddMemberToRegister(Member member) => _memberList.Add(member);
+       
 
-        public void DeleteMemberFromRegister(string memberId)
-        {
-            OpenRegister();
-            _memberList.RemoveAt(GetMemberIndex(memberId));
-            WriteToRegister();
-        }
+        public void DeleteMemberFromRegister(string memberId) => _memberList.RemoveAt(GetMemberIndex(memberId));
+       
 
         public void OpenRegister()
         {
@@ -45,12 +38,7 @@ namespace Model
             _memberList = JsonConvert.DeserializeObject<List<Member>>(jsonDataString);
         }
 
-        public void EditMemberInRegister(string memberId, string name, int personalNumber)
-        {
-            OpenRegister();
-            _memberList[GetMemberIndex(memberId)].Update(name, personalNumber);
-            WriteToRegister();
-        }
+        public void EditMemberInRegister(string memberId, string name, int personalNumber) => _memberList[GetMemberIndex(memberId)].Update(name, personalNumber);
 
         public int GetMemberIndex(string memberId)
         {
@@ -62,31 +50,13 @@ namespace Model
 
         }
 
-        public void AddBoatToMember(string memberId, Boat boat)
-        {
-            OpenRegister();
-            _memberList[GetMemberIndex(memberId)].AddBoat(boat);
-            WriteToRegister();
+        public void AddBoatToMember(string memberId, Boat boat) => _memberList[GetMemberIndex(memberId)].AddBoat(boat);
 
-        }
+        public void RemoveBoatFromMember(string memberId, int boatIndex) => _memberList[GetMemberIndex(memberId)].RemoveBoat(boatIndex); // hidden dependency? vi har ingen signatur för Members
 
-        public void RemoveBoatFromMember(string memberId, int boatIndex)
-        {
-            OpenRegister();
-            _memberList[GetMemberIndex(memberId)].RemoveBoat(boatIndex);
-            WriteToRegister();
-        }
+        public void EditMemberBoat(string memberId, int boatIndex, BoatType boatType, int length) => _memberList[GetMemberIndex(memberId)].EditBoat(boatIndex, boatType, length);
 
-        public void EditMemberBoat(string memberId, int boatIndex, BoatType boatType, int length)
-        {
-            OpenRegister();
-            _memberList[GetMemberIndex(memberId)].EditBoat(boatIndex, boatType, length);
-            WriteToRegister();
-        }
-
-        public Register()
-        {
-            OpenRegister();
-        }
+        public Register() => OpenRegister();
+        
     }
 }

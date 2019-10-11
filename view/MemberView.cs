@@ -15,13 +15,12 @@ namespace View
             Console.WriteLine("Enter Personal number (YYMMDD): ");
             int personalNumber = Int32.Parse(Console.ReadLine());
 
-            Member newMember = new Member(name, personalNumber); // kolla om det här är hidden dependency?
+            Member newMember = new Member(name, personalNumber); 
             _register.AddMemberToRegister(newMember);
 
             Console.WriteLine($"New member {newMember.Id} added.");
         }
 
-        //List all members
         public void DisplayAllMembersView()
         {
             Console.WriteLine("Press any key for a compact list or 'V' for a more verbose list");
@@ -66,8 +65,6 @@ namespace View
             Console.WriteLine("Enter member Id");
             int memberindex = _register.GetMemberIndex(Console.ReadLine());
             var chosenMember = _register.GetMembersCopy() [memberindex];
-           
-           
 
             string memberBoats = "";
             foreach (var boat in chosenMember.Boats)
@@ -90,7 +87,6 @@ namespace View
             }
         }
 
-        // display more detailed information about the members
         private void DisplayVerboseMembers()
         {
             foreach (var member in _register.GetMembersCopy())

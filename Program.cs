@@ -10,10 +10,12 @@ namespace _1dv607_ws2
         {
             
             Register register = new Register();
+            register.OpenRegister();
             BoatView bView = new BoatView(register);
             MemberView mView = new MemberView(register);
             RegisterView mainView = new RegisterView();
             mainView.RenderView(bView, mView);
+            register.WriteToRegister();
 
         }
     }

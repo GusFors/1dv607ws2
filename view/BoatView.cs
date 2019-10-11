@@ -6,10 +6,11 @@ namespace View
     class BoatView
     {
         private Register _register;
+
         public void BoatToMemberView()
         {
             Console.WriteLine("What type of boat is it? Enter:\n'1'= Sailboat, '2' = Motorsailer, '3' = Kayak/Canoe, '4' = other");
-            var boatType = (BoatType) Int32.Parse(Console.ReadLine());
+            BoatType boatType = (BoatType) Int32.Parse(Console.ReadLine());
 
             Console.WriteLine("Enter the boats length in whole meters:");
             int boatLength = Int32.Parse(Console.ReadLine());
@@ -37,7 +38,7 @@ namespace View
         public void PrintBoatsView(string memberId)
         {
             int memberIndex = _register.GetMemberIndex(memberId);
-            var chosenMember = _register.GetMembersCopy() [memberIndex];
+            Member chosenMember = _register.GetMembersCopy()[memberIndex];
             string boatString = "";
 
             for (int i = 0; i < chosenMember.Boats.Count; i++)
@@ -55,10 +56,10 @@ namespace View
             PrintBoatsView(memberId);
 
             Console.WriteLine("Enter the number of the boat you want to edit:");
-            var boatIndex = Int32.Parse(Console.ReadLine());
+            int boatIndex = Int32.Parse(Console.ReadLine());
 
             Console.WriteLine("Enter new boat type:\n '1'= Sailboat, '2' = Motorsailer, '3' = Kayak/Canoe, '4' = other");
-            var boatType = (BoatType) Int32.Parse(Console.ReadLine());
+            BoatType boatType = (BoatType) Int32.Parse(Console.ReadLine());
 
             Console.WriteLine("Enter the boats new length in whole meters:");
             int boatLength = Int32.Parse(Console.ReadLine());

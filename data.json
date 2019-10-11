@@ -15,10 +15,43 @@
       {
         "Length": 4,
         "Type": 3
+      },
+      {
+        "Length": 3,
+        "Type": 1
       }
     ],
     "Name": "Lars",
     "PersonalNumber": 670505,
     "Id": "La6716"
+  },
+  {
+    "_boatArray": [],
+    "Name": "sofia",
+    "PersonalNumber": 980909,
+    "Id": "so980"
+  },
+  {
+    "_boatArray": [
+      {
+        "Length": 4,
+        "Type": 1
+      }
+    ],
+    "Name": "ulrika",
+    "PersonalNumber": 670101,
+    "Id": "ul6763"
+  },
+  {
+    "_boatArray": [],
+    "Name": "bob",
+    "PersonalNumber": 540303,
+    "Id": "bo5414"
+  },
+  {
+    "_boatArray": [],
+    "Name": "karl",
+    "PersonalNumber": 880808,
+    "Id": "ka8833"
   }
 ]
