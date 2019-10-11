@@ -38,7 +38,7 @@ namespace View
         public void PrintBoatsView(string memberId)
         {
             int memberIndex = _register.GetMemberIndex(memberId);
-            Member chosenMember = _register.GetMembersCopy()[memberIndex];
+            var chosenMember = _register.GetMembersCopy() [memberIndex];
             string boatString = "";
 
             for (int i = 0; i < chosenMember.Boats.Count; i++)

@@ -8,7 +8,6 @@ namespace Model
 {
     class Register
     {
-        //TODO: Save and open member data only on startup and exit.
         private List<Member> _memberList = new List<Member>();
 
         public ReadOnlyCollection<Member> GetMembersCopy() => new ReadOnlyCollection<Member>(_memberList);
@@ -23,10 +22,8 @@ namespace Model
         }
 
         public void AddMemberToRegister(Member member) => _memberList.Add(member);
-       
 
         public void DeleteMemberFromRegister(string memberId) => _memberList.RemoveAt(GetMemberIndex(memberId));
-       
 
         public void OpenRegister()
         {
@@ -46,8 +43,7 @@ namespace Model
             {
                 return _memberList.FindIndex(m => m.Id == memberId);
             }
-            throw new ArgumentException("Could not find specified member.");
-
+            throw new IndexOutOfRangeException("Could not find specified member.");
         }
 
         public void AddBoatToMember(string memberId, Boat boat) => _memberList[GetMemberIndex(memberId)].AddBoat(boat);
@@ -57,6 +53,6 @@ namespace Model
         public void EditMemberBoat(string memberId, int boatIndex, BoatType boatType, int length) => _memberList[GetMemberIndex(memberId)].EditBoat(boatIndex, boatType, length);
 
         public Register() => OpenRegister();
-        
+
     }
 }

@@ -15,7 +15,7 @@ namespace View
             Console.WriteLine("Enter Personal number (YYMMDD): ");
             int personalNumber = Int32.Parse(Console.ReadLine());
 
-            Member newMember = new Member(name, personalNumber); 
+            Member newMember = new Member(name, personalNumber);
             _register.AddMemberToRegister(newMember);
 
             Console.WriteLine($"New member {newMember.Id} added.");
@@ -28,11 +28,11 @@ namespace View
 
             if (userFormat.ToUpper() == "V")
             {
-                DisplayVerboseMembers();
+                PrintVerboseMembers();
             }
             else
             {
-                DisplayCompactMembers();
+                PrintCompactMembers();
             }
         }
 
@@ -63,15 +63,20 @@ namespace View
         public void DisplayMemberView()
         {
             Console.WriteLine("Enter member Id");
-            int memberindex = _register.GetMemberIndex(Console.ReadLine());
-            var chosenMember = _register.GetMembersCopy() [memberindex];
+            int memberIndex = _register.GetMemberIndex(Console.ReadLine());
+            var membersCopy = _register.GetMembersCopy();
+            Member specificMember = membersCopy[memberIndex];
+            PrintSpecificMember(specificMember);
+        }
 
+        public void PrintSpecificMember(Member member)
+        {
             string memberBoats = "";
-            foreach (var boat in chosenMember.Boats)
+            foreach (var boat in member.Boats)
             {
                 memberBoats += $"({boat.Type}, length: {boat.Length}m), ";
             }
-            Console.WriteLine($"Member: [Name: {chosenMember.Name}, Personal number: {chosenMember.PersonalNumber}, Id: {chosenMember.Id}, Boats: [{memberBoats}]]");
+            Console.WriteLine($"Member: [Name: {member.Name}, Personal number: {member.PersonalNumber}, Id: {member.Id}, Boats: [{memberBoats}]]");
         }
 
         public MemberView(Register register)
@@ -79,15 +84,15 @@ namespace View
             _register = register;
         }
 
-        private void DisplayCompactMembers()
+        private void PrintCompactMembers()
         {
-            foreach (var Member in _register.GetMembersCopy())
+            foreach (var member in _register.GetMembersCopy())
             {
-                Console.WriteLine($"{Member.Name}: [id: {Member.Id}, Number of boats: {Member.Boats.Count}]");
+                Console.WriteLine($"{member.Name}: [id: {member.Id}, Number of boats: {member.Boats.Count}]");
             }
         }
 
-        private void DisplayVerboseMembers()
+        private void PrintVerboseMembers()
         {
             foreach (var member in _register.GetMembersCopy())
             {

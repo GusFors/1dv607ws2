@@ -9,12 +9,12 @@ namespace Model
     class Member
     {
         [JsonPropertyAttribute] // Needed for storing some properties correctly in json.
-        private Boat[] _boatArray;
+        private List<Boat> _boatList;
         private int _personalNumber;
         private string _name;
 
         [JsonIgnoreAttribute]
-        public ReadOnlyCollection<Boat> Boats => new ReadOnlyCollection<Boat>(_boatArray);
+        public ReadOnlyCollection<Boat> Boats => new ReadOnlyCollection<Boat>(_boatList);
 
         public string Name
         {
@@ -59,45 +59,35 @@ namespace Model
             Name = name;
             PersonalNumber = personalNumber;
             Id = CreateId();
-            if (_boatArray == null) // prevent null json storage
+            if (_boatList == null) // prevent null json storage
             {
-                _boatArray = new Boat[0];
+                _boatList = new List<Boat>();
             }
         }
 
-        public void AddBoat(Boat boat)
-        {
-            List<Boat> tempBoatList = new List<Boat>(Boats);
-            tempBoatList.Add(boat);
-            _boatArray = tempBoatList.ToArray();
-        }
+        public void AddBoat(Boat boat) => _boatList.Add(boat);
 
         public void RemoveBoat(int boatIndex)
-        {
+        {   
             if (Boats.Count > boatIndex)
             {
-                List<Boat> tempBoatList = new List<Boat>(_boatArray);
-                tempBoatList.RemoveAt(boatIndex);
-                _boatArray = tempBoatList.ToArray();
+                _boatList.RemoveAt(boatIndex);
             }
             else
             {
-                throw new ArgumentException("Could not find specified boat.");
+                throw new IndexOutOfRangeException("Member does not contain boat with specified index.");
             }
-
         }
 
         public void EditBoat(int boatIndex, BoatType boatType, int length)
         {
             if (Boats.Count > boatIndex)
             {
-                var tempBoatList = new List<Boat>(_boatArray);
-                tempBoatList[boatIndex].Update(boatType, length);
-                _boatArray = tempBoatList.ToArray();
+                _boatList[boatIndex].Update(boatType, length);
             }
             else
             {
-                throw new ArgumentException("Could not find and edit specified boat.");
+                throw new IndexOutOfRangeException("Could not edit boat with specified index.");
             }
 
         }

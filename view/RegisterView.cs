@@ -58,7 +58,7 @@ namespace View
                     }
                     Console.WriteLine();
                 }
-                catch (Exception ex) // TODO: make input error feedback more specific 
+                catch (Exception ex) 
                 {
 
                     Console.WriteLine(ex.Message);

@@ -1,55 +1,55 @@
 [
   {
-    "_boatArray": [
-      {
-        "Length": 5,
-        "Type": 2
-      }
-    ],
+    "_boatList": [],
     "Name": "Jonas",
     "PersonalNumber": 980909,
     "Id": "Jo9829"
   },
   {
-    "_boatArray": [
+    "_boatList": [
       {
-        "Length": 4,
-        "Type": 3
-      },
+        "Length": 7,
+        "Type": 2
+      }
+    ],
+    "Name": "lars",
+    "PersonalNumber": 670503,
+    "Id": "la6783"
+  },
+  {
+    "_boatList": [
       {
-        "Length": 3,
+        "Length": 9,
         "Type": 1
       }
     ],
-    "Name": "Lars",
-    "PersonalNumber": 670505,
-    "Id": "La6716"
-  },
-  {
-    "_boatArray": [],
     "Name": "sofia",
     "PersonalNumber": 980909,
     "Id": "so980"
   },
   {
-    "_boatArray": [
-      {
-        "Length": 4,
-        "Type": 1
-      }
-    ],
+    "_boatList": [],
     "Name": "ulrika",
     "PersonalNumber": 670101,
     "Id": "ul6763"
   },
   {
-    "_boatArray": [],
+    "_boatList": [
+      {
+        "Length": 6,
+        "Type": 3
+      },
+      {
+        "Length": 5,
+        "Type": 3
+      }
+    ],
     "Name": "bob",
     "PersonalNumber": 540303,
     "Id": "bo5414"
   },
   {
-    "_boatArray": [],
+    "_boatList": [],
     "Name": "karl",
     "PersonalNumber": 880808,
     "Id": "ka8833"
