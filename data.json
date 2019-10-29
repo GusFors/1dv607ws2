@@ -3,55 +3,40 @@
     "_boatList": [],
     "Name": "Jonas",
     "PersonalNumber": 980909,
-    "Id": "Jo9829"
+    "Id": 1
+  },
+  {
+    "_boatList": [],
+    "Name": "peter",
+    "PersonalNumber": 980808,
+    "Id": 2
   },
   {
     "_boatList": [
       {
-        "Length": 7,
+        "Length": 5,
         "Type": 2
       }
     ],
-    "Name": "lars",
-    "PersonalNumber": 670503,
-    "Id": "la6783"
-  },
-  {
-    "_boatList": [
-      {
-        "Length": 9,
-        "Type": 1
-      }
-    ],
-    "Name": "sofia",
-    "PersonalNumber": 980909,
-    "Id": "so980"
+    "Name": "per",
+    "PersonalNumber": 670707,
+    "Id": 3
   },
   {
     "_boatList": [],
     "Name": "ulrika",
-    "PersonalNumber": 670101,
-    "Id": "ul6763"
+    "PersonalNumber": 990909,
+    "Id": 4
   },
   {
     "_boatList": [
       {
-        "Length": 6,
-        "Type": 3
-      },
-      {
-        "Length": 5,
-        "Type": 3
+        "Length": 8,
+        "Type": 2
       }
     ],
-    "Name": "bob",
-    "PersonalNumber": 540303,
-    "Id": "bo5414"
-  },
-  {
-    "_boatList": [],
-    "Name": "karl",
+    "Name": "Bob",
     "PersonalNumber": 880808,
-    "Id": "ka8833"
+    "Id": 5
   }
 ]

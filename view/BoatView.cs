@@ -17,25 +17,25 @@ namespace View
             Boat newBoat = new Boat(boatType, boatLength);
 
             Console.WriteLine("Enter the member Id to add the boat to:");
-            string memberId = Console.ReadLine();
+            int memberId = Int32.Parse(Console.ReadLine());
             _register.AddBoatToMember(memberId, newBoat);
 
-            Console.WriteLine($"New boat added to {memberId}");
+            Console.WriteLine($"New boat added to member with id: {memberId}");
         }
 
         public void DeleteBoatView()
         {
             Console.WriteLine("Enter member Id:");
-            string memberId = Console.ReadLine();
+            int memberId = Int32.Parse(Console.ReadLine());
             PrintBoatsView(memberId);
 
             Console.WriteLine("Enter the number of the boat you want to delete:");
             _register.RemoveBoatFromMember(memberId, Int32.Parse(Console.ReadLine()));
 
-            Console.WriteLine($"Boat deleted from {memberId}.");
+            Console.WriteLine($"Boat deleted from member with id:{memberId}.");
         }
 
-        public void PrintBoatsView(string memberId)
+        public void PrintBoatsView(int memberId)
         {
             int memberIndex = _register.GetMemberIndex(memberId);
             var chosenMember = _register.GetMembersCopy() [memberIndex];
@@ -52,7 +52,7 @@ namespace View
         public void EditBoatView()
         {
             Console.WriteLine("Enter member Id:");
-            string memberId = Console.ReadLine();
+            int memberId = Int32.Parse(Console.ReadLine());
             PrintBoatsView(memberId);
 
             Console.WriteLine("Enter the number of the boat you want to edit:");
@@ -65,7 +65,7 @@ namespace View
             int boatLength = Int32.Parse(Console.ReadLine());
             _register.EditMemberBoat(memberId, boatIndex, boatType, boatLength);
 
-            Console.WriteLine($"{memberId} boat was edited.");
+            Console.WriteLine($"Member with id:{memberId} boat was edited.");
 
         }
 

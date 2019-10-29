@@ -15,10 +15,10 @@ namespace View
             Console.WriteLine("Enter Personal number (YYMMDD): ");
             int personalNumber = Int32.Parse(Console.ReadLine());
 
-            Member newMember = new Member(name, personalNumber);
+            Member newMember = new Member(name, personalNumber, _register.GetNextFreeMemberId());
             _register.AddMemberToRegister(newMember);
 
-            Console.WriteLine($"New member {newMember.Id} added.");
+            Console.WriteLine($"New member with id: {newMember.Id} added.");
         }
 
         public void DisplayAllMembersView()
@@ -39,16 +39,17 @@ namespace View
         public void DeleteMemberView()
         {
             Console.WriteLine("Enter member Id:");
-            string memberId = Console.ReadLine();
+            int memberId = Int32.Parse(Console.ReadLine());
             _register.DeleteMemberFromRegister(memberId);
 
-            Console.WriteLine($"{memberId} was deleted.");
+            Console.WriteLine($"Member with id:{memberId} was deleted.");
         }
 
         public void EditMemberView()
         {
+
             Console.WriteLine("Enter the member Id:");
-            string memberId = Console.ReadLine();
+            int memberId = Int32.Parse(Console.ReadLine());
             Console.WriteLine("Enter new member name:");
             string memberName = Console.ReadLine();
 
@@ -63,7 +64,7 @@ namespace View
         public void DisplayMemberView()
         {
             Console.WriteLine("Enter member Id");
-            int memberIndex = _register.GetMemberIndex(Console.ReadLine());
+            int memberIndex = _register.GetMemberIndex(Int32.Parse(Console.ReadLine()));
             var membersCopy = _register.GetMembersCopy();
             Member specificMember = membersCopy[memberIndex];
             PrintSpecificMember(specificMember);

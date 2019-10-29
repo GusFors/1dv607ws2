@@ -14,51 +14,43 @@ namespace View
                 {
                     RenderMenuView();
                     string optionChoice = Console.ReadLine();
+                    switch (optionChoice)
+                    {
+                        case "1":
+                            memberView.AddMemberView();
+                            break;
+                        case "2":
+                            memberView.DisplayAllMembersView();
+                            break;
+                        case "3":
+                            memberView.DeleteMemberView();
+                            break;
+                        case "4":
+                            memberView.EditMemberView();
+                            break;
+                        case "5":
+                            memberView.DisplayMemberView();
+                            break;
+                        case "6":
+                            boatView.BoatToMemberView();
+                            break;
+                        case "7":
+                            boatView.DeleteBoatView();
+                            break;
+                        case "8":
+                            boatView.EditBoatView();
+                            break;
+                        case "0":
+                            running = false;
+                            break;
 
-                    if (optionChoice == "1") //Add new member
-                    {
-                        memberView.AddMemberView();
-                    }
-                    else if (optionChoice == "2") // display members
-                    {
-                        memberView.DisplayAllMembersView();
-                    }
-                    else if (optionChoice == "3") //delete member
-                    {
-                        memberView.DeleteMemberView();
-                    }
-                    else if (optionChoice == "4") // edit member
-                    {
-                        memberView.EditMemberView();
-                    }
-                    else if (optionChoice == "5") // display specific member
-                    {
-                        memberView.DisplayMemberView();
-                    }
-                    else if (optionChoice == "6") // register boat to member
-                    {
-                        boatView.BoatToMemberView();
-                    }
-                    else if (optionChoice == "7") // delete boat from member
-                    {
-                        boatView.DeleteBoatView();
-
-                    }
-                    else if (optionChoice == "8") // edit a boat
-                    {
-                        boatView.EditBoatView();
-                    }
-                    else if (optionChoice == "0") // quit register
-                    {
-                        running = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Oops, could not understand the input, try again");
+                        default:
+                            Console.WriteLine("Oops, could not understand the input, try again");
+                            break;
                     }
                     Console.WriteLine();
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
 
                     Console.WriteLine(ex.Message);

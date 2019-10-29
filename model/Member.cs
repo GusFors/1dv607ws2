@@ -32,33 +32,24 @@ namespace Model
         }
 
         [JsonPropertyAttribute]
-        public string Id
+        public int Id // CHANGE TO Int IN CLASS DIAGRAM
         {
             get;
             private set;
         }
 
-        private string CreateId()
-        {
-            Random randomizer = new Random();
-            string namePart = Name.Substring(0, 2);
-            string personalNumberPart = PersonalNumber.ToString().Substring(0, 2);
-            int randomNumPart = (int) (randomizer.NextDouble() * 100);
-            return namePart + personalNumberPart + randomNumPart;
-        }
-
-        public void Update(string name, int personalNumber)
+        public void ChangeMemberInfo(string name, int personalNumber)
         {
             Name = name;
             PersonalNumber = personalNumber;
-            Id = CreateId();
+            
         }
 
-        public Member(string name, int personalNumber)
+        public Member(string name, int personalNumber, int memberId)
         {
             Name = name;
             PersonalNumber = personalNumber;
-            Id = CreateId();
+            Id = memberId;
             if (_boatList == null) // prevent null json storage
             {
                 _boatList = new List<Boat>();

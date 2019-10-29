@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace Model
@@ -23,8 +24,9 @@ namespace Model
 
         public void AddMemberToRegister(Member member) => _memberList.Add(member);
 
-        public void DeleteMemberFromRegister(string memberId) => _memberList.RemoveAt(GetMemberIndex(memberId));
+        public void DeleteMemberFromRegister(int memberId) => _memberList.RemoveAt(GetMemberIndex(memberId));
 
+        //Read member data from json file
         public void OpenRegister()
         {
             string jsonDataString;
@@ -35,9 +37,9 @@ namespace Model
             _memberList = JsonConvert.DeserializeObject<List<Member>>(jsonDataString);
         }
 
-        public void EditMemberInRegister(string memberId, string name, int personalNumber) => _memberList[GetMemberIndex(memberId)].Update(name, personalNumber);
+        public void EditMemberInRegister(int memberId, string name, int personalNumber) => _memberList[GetMemberIndex(memberId)].ChangeMemberInfo(name, personalNumber);
 
-        public int GetMemberIndex(string memberId)
+        public int GetMemberIndex(int memberId)
         {
             if (_memberList.Exists(m => m.Id == memberId))
             {
@@ -46,11 +48,20 @@ namespace Model
             throw new IndexOutOfRangeException("Could not find specified member.");
         }
 
-        public void AddBoatToMember(string memberId, Boat boat) => _memberList[GetMemberIndex(memberId)].AddBoat(boat);
+        public int GetNextFreeMemberId()
+        { 
+            List<Member> sortedMemberIds = new List<Member>(GetMembersCopy());
+            sortedMemberIds.OrderBy(m => m.Id);
+            int memberListLastIndex = sortedMemberIds.Count - 1;
 
-        public void RemoveBoatFromMember(string memberId, int boatIndex) => _memberList[GetMemberIndex(memberId)].RemoveBoat(boatIndex); // hidden dependency? vi har ingen signatur för Members
+            return sortedMemberIds[memberListLastIndex].Id + 1;
+        }
 
-        public void EditMemberBoat(string memberId, int boatIndex, BoatType boatType, int length) => _memberList[GetMemberIndex(memberId)].EditBoat(boatIndex, boatType, length);
+        public void AddBoatToMember(int memberId, Boat boat) => _memberList[GetMemberIndex(memberId)].AddBoat(boat);
+
+        public void RemoveBoatFromMember(int memberId, int boatIndex) => _memberList[GetMemberIndex(memberId)].RemoveBoat(boatIndex);
+
+        public void EditMemberBoat(int memberId, int boatIndex, BoatType boatType, int length) => _memberList[GetMemberIndex(memberId)].EditBoat(boatIndex, boatType, length);
 
         public Register() => OpenRegister();
 
